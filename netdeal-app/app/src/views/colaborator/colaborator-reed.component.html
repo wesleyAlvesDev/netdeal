@@ -1,0 +1,71 @@
+<mat-dialog ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Consulta colaborador - #{{id}}</h2>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content >
+        <div class="md-dialog-content" style="padding-bottom: 0;">
+            <md-input-container class="md-block">
+                <label>Código (ID)</label>
+                <input ng-model="id" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <label>Nome Completo</label>
+                <input ng-model="fullName" disabled>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <label>Força da senha</label>
+                <input ng-model="scrorePassword" disabled>
+            </md-input-container>
+        </div>
+
+        <div class="container" ng-if="subordinates.length > 0">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h3>Subordinados</h3>
+                </div>
+            </md-toolbar>
+        </div>
+        
+        <div class="container mt-2">
+            <md-list-item ng-repeat="colaborator in subordinates">
+                <div class="row" style="width: 120%;">
+                    <div class="col-md-6">
+                        <p style="margin-bottom: 0; font-weight: 700;">Código (ID): {{colaborator.id}}</p>
+                        <p style="margin-bottom: 0; font-weight: 700;">Nome: {{colaborator.fullName}} </p>
+                        <p style="font-weight: 700;">Força da senha: <span ng-style="{'color': getColor(colaborator.scrorePassword)}">{{ getStrengthPassword(colaborator.scrorePassword)}}</span></p>
+
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end">
+                        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                            <md-button class="md-fab md-mini md-info" ng-click="openToViewColaborator(colaborator.id)">
+                                <md-icon md-svg-icon="app/assets/icon/search.svg"></md-icon>
+                            </md-button>
+
+                            <md-button class="md-fab md-mini md-update" ng-click="openUpdate(colaborator.id)">
+                                <md-icon md-svg-icon="app/assets/icon/edit_square.svg"></md-icon>
+                            </md-button>
+
+                            <md-button class="md-fab md-mini md-danger"
+                                ng-click="confirmDelete($event, colaborator.id)">
+                                <md-icon md-svg-icon="app/assets/icon/delete.svg"></md-icon>
+                            </md-button>
+                        </section>
+                    </div>
+                </div>
+                <md-divider inset></md-divider>
+            </md-list-item>
+        </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <md-button class="md-danger" ng-click="cancel()">Sair</md-button>
+    </md-dialog-actions>
+
+
+
+</mat-dialog>

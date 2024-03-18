@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/netdeal?useSSL=false&serverTimezone=UTC
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+      generate-ddl: true
+      show-sql: false
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQLDialect
+    properties:
+      jackson:
+        serialization:
+          WRITE_DATES_AS_TIMESTAMPS: false
+
+server:
+  error:
+    include-message: always
+
+
+password:
+  hashkey:
+    encripta: be0a6474-fc7f-4978-805d-f641619c136c
+

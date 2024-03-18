@@ -1,0 +1,30 @@
+<mat-dialog ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Criar Colaborador</h2>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <div class="md-dialog-content">
+        
+            <md-input-container class="md-block">
+                <label for="required">Nome Completo <span class="required">*</span></label>
+                <input ng-model="fullName">
+                <span ng-if="!fullName" class="required"> Campo obrigatório. </span>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <label>Senha <span class="required">*</span></label>
+                <input ng-model="password" type="password">
+                <span ng-if="!password" class="required"> Campo obrigatório. </span>
+            </md-input-container>
+        </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <md-button class="md-danger" ng-click="cancel()">Cancelar</md-button>
+        <md-button class="md-primary" ng-click="createColaborator()" ng-disabled="!password || !fullName">Salvar</md-button>
+    </md-dialog-actions>
+
+</mat-dialog>

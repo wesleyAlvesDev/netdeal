@@ -1,0 +1,37 @@
+<mat-dialog ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Criar Subordinado</h2>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <md-input-container class="md-block">
+                        <md-select placeholder="Encarregado" ng-model="manager">
+                            <md-option ng-value="colaborator"ng-repeat="colaborator in allColaborators">{{colaborator.fullName}}</md-option>
+                        </md-select>
+                        <span ng-if="!manager" class="required"> Campo obrigatório. </span>
+                    </md-input-container>
+                </div>
+                <div class="col-md-6">
+                    <md-input-container class="md-block">
+                        <md-select placeholder="Subordinado" ng-model="subordinate">
+                            <md-option ng-value="colaborator" ng-repeat="colaborator in allColaborators">{{colaborator.fullName}}</md-option>
+                        </md-select>
+                        <span ng-if="!subordinate" class="required"> Campo obrigatório. </span>
+                    </md-input-container>
+                </div>
+                <span ng-if="manager != null && subordinate != nul && manager.id === subordinate.id" class="required"> Por favor, selecione outro colaborador. </span>
+            </div>
+        </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <md-button class="md-danger" ng-click="cancel()">Cancelar</md-button>
+        <md-button class="md-primary" ng-click="createSubordinate()" ng-disabled="(manager == undefined || subordinate == undefined) || manager.id === subordinate.id">Salvar</md-button>
+    </md-dialog-actions>
+
+</mat-dialog>
