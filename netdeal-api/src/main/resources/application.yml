@@ -6,8 +6,8 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create
-      generate-ddl: true
+      ddl-auto: none
+      generate-ddl: false
       show-sql: false
       properties:
         hibernate:
